@@ -92,7 +92,7 @@ class UIFunctions(MainWindow):
     def toggleLeftBox(self, enable):
         if enable:
             # GET WIDTH
-            width = self.ui.extraLeftBox.width()
+            width = self.ui.leftMenuBg.width()
             widthRightBox = self.ui.extraRightBox.width()
             maxExtend = Settings.LEFT_BOX_WIDTH
             color = Settings.BTN_LEFT_BOX_COLOR
@@ -258,9 +258,9 @@ class UIFunctions(MainWindow):
         self.shadow.setColor(QColor(0, 0, 0, 150))
         self.ui.bgApp.setGraphicsEffect(self.shadow)
 
-        # RESIZE WINDOW
-        self.sizegrip = QSizeGrip(self.ui.frame_size_grip)
-        self.sizegrip.setStyleSheet("width: 20px; height: 20px; margin 0px; padding: 0px;")
+        # # RESIZE WINDOW
+        # self.sizegrip = QSizeGrip(self.ui.frame_size_grip)
+        # self.sizegrip.setStyleSheet("width: 20px; height: 20px; margin 0px; padding: 0px;")
 
         # MINIMIZE
         self.ui.minimizeAppBtn.clicked.connect(lambda: self.showMinimized())

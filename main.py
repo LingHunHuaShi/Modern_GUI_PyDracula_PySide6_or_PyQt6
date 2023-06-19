@@ -45,11 +45,9 @@ class MainWindow(QMainWindow):
 
         # APP NAME
         # ///////////////////////////////////////////////////////////////
-        title = "PyDracula - Modern GUI"
-        description = "PyDracula APP - Theme with colors based on Dracula for Python."
+        title = "学生个人课表管理系统"
         # APPLY TEXTS
         self.setWindowTitle(title)
-        widgets.titleRightInfo.setText(description)
 
         # TOGGLE MENU
         # ///////////////////////////////////////////////////////////////
@@ -67,16 +65,10 @@ class MainWindow(QMainWindow):
         # ///////////////////////////////////////////////////////////////
 
         # LEFT MENUS
-        widgets.btn_home.clicked.connect(self.buttonClick)
-        widgets.btn_widgets.clicked.connect(self.buttonClick)
-        widgets.btn_new.clicked.connect(self.buttonClick)
-        widgets.btn_save.clicked.connect(self.buttonClick)
+        widgets.btn_schedule.clicked.connect(self.buttonClick)
+        widgets.btn_classes.clicked.connect(self.buttonClick)
+        widgets.btn_export.clicked.connect(self.buttonClick)
 
-        # EXTRA LEFT BOX
-        def openCloseLeftBox():
-            UIFunctions.toggleLeftBox(self, True)
-        widgets.toggleLeftBox.clicked.connect(openCloseLeftBox)
-        widgets.extraCloseColumnBtn.clicked.connect(openCloseLeftBox)
 
         # EXTRA RIGHT BOX
         def openCloseRightBox():
@@ -89,7 +81,7 @@ class MainWindow(QMainWindow):
 
         # SET CUSTOM THEME
         # ///////////////////////////////////////////////////////////////
-        useCustomTheme = False
+        useCustomTheme = True
         themeFile = "themes\py_dracula_light.qss"
 
         # SET THEME AND HACKS
@@ -103,7 +95,7 @@ class MainWindow(QMainWindow):
         # SET HOME PAGE AND SELECT MENU
         # ///////////////////////////////////////////////////////////////
         widgets.stackedWidget.setCurrentWidget(widgets.home)
-        widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
+        widgets.btn_schedule.setStyleSheet(UIFunctions.selectMenu(widgets.btn_schedule.styleSheet()))
 
 
     # BUTTONS CLICK
@@ -114,26 +106,24 @@ class MainWindow(QMainWindow):
         btn = self.sender()
         btnName = btn.objectName()
 
-        # SHOW HOME PAGE
-        if btnName == "btn_home":
+        # SHOW SCHEDULE PAGE
+        if btnName == "btn_schedule":
             widgets.stackedWidget.setCurrentWidget(widgets.home)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        # SHOW WIDGETS PAGE
-        if btnName == "btn_widgets":
+        # SHOW CLASSES PAGE
+        if btnName == "btn_classes":
             widgets.stackedWidget.setCurrentWidget(widgets.widgets)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        # SHOW NEW PAGE
-        if btnName == "btn_new":
+        # SHOW EXPORT PAGE
+        if btnName == "btn_export":
             widgets.stackedWidget.setCurrentWidget(widgets.new_page) # SET PAGE
             UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
 
-        if btnName == "btn_save":
-            print("Save BTN clicked!")
 
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')
